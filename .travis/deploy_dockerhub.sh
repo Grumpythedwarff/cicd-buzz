@@ -6,5 +6,7 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-docker build -f Dockerfile -t ${DOCKER_USER}/${TRAVIS_REPO_SLUG%/}:$TAG .
-docker push ${DOCKER_USER}/${TRAVIS_REPO_SLUG%/}:$TAG
+REPO_NAME=${TRAVIS_REPO_SLUG%/}
+echo ${REPO_NAME}
+docker build -f Dockerfile -t ${DOCKER_USER}/${REPO_NAME}:$TAG .
+docker push ${DOCKER_USER}/${REPO_NAME}:$TAG
