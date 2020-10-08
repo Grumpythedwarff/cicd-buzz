@@ -12,5 +12,5 @@ echo ${TRAVIS_REPO_SLUG,,}
 REPO_NAME=${TRAVIS_REPO_SLUG%/}
 echo ${REPO_NAME}
 
-docker build -f Dockerfile -t ${DOCKER_USER}/${REPO_NAME}:$TAG .
-docker push ${DOCKER_USER}/${REPO_NAME}:$TAG
+docker build -f Dockerfile -t ${TRAVIS_REPO_SLUG,,}:$TAG .
+docker push ${TRAVIS_REPO_SLUG,,}:$TAG
