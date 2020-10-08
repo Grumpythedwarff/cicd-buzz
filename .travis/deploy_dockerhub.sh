@@ -6,11 +6,6 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-echo "${BASH_VERSION}"
-echo ${TRAVIS_REPO_SLUG}
-echo ${TRAVIS_REPO_SLUG,,}
-REPO_NAME=${TRAVIS_REPO_SLUG%/}
-echo ${REPO_NAME}
 
-docker build -f Dockerfile -t ${TRAVIS_REPO_SLUG,,}:$TAG .
+docker build -f Dockerfile -t ${TRAVIS_REPO_SLUG,,}:$TAG .  # ,, is parameter substitution to make the variable lowercase
 docker push ${TRAVIS_REPO_SLUG,,}:$TAG
