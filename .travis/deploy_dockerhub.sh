@@ -9,5 +9,7 @@ else
 fi
 
 # ,, is parameter substitution to make the variable lowercase
+echo ${TRAVIS_REPO_SLUG,,}
+echo ${TRAVIS_REPO_SLUG,,}:$TAG
 docker build -f Dockerfile -t ${TRAVIS_REPO_SLUG,,}:$TAG .
 docker push ${TRAVIS_REPO_SLUG,,}:$TAG
